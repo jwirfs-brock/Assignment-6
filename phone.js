@@ -1,4 +1,4 @@
-tabs = ["dialer","contact-list","add-contact","gestures"];
+tabs = ["dialer","contact-list","add-contact","about"];
 // Sets the initial tabPosition to 0 (dialer)
 tabPosition = 0;
 
@@ -21,22 +21,24 @@ $("#add-contact").click(function() { // when the "add-contact" button is clicked
   switchTabs(2)
 });
 
-$("#about").click(function() { // when the "gestures" button is clicked
+$("#about").click(function() { // when the "about" button is clicked
   switchTabs(3)
 });
 
 
-// Turn off large format mode
+/** // Toggle large format mode -- I really can't get this to work by switching the style sheets, ahhh!
 
-$("#large-format-off-3").click(function() { // when the "Turn off large format" button is clicked
-  window.location.href = 'index.html';
-  switchTabs(3); // This should make sure you stay on the same tab -- but for some reason it's not working!! :(
+$("#large-format-on").click(function() { // when the "Turn off large format" button is clicked
+  setActiveStyleSheet('alternate'); //add code to switch the style sheet to the large format one
+  //window.location.href = 'index.html';
+  //switchTabs(3); // This should make sure you stay on the same tab -- but for some reason it's not working!! :(
 });
 
-$("#large-format-on-3").click(function() { // when the "Turn off large format" button is clicked
-  window.location.href = 'index.html';
-  switchTabs(3); // This should make sure you stay on the same tab -- but for some reason it's not working!! :(
+$("#large-format-off").click(function() { // when the "Turn on large format" button is clicked
+  setActiveStyleSheet('default');
 });
+
+**/
 
 // When you click a button, add that number into the dialer
 $("#1").click(function() {
@@ -96,26 +98,26 @@ $("#clear").click(function() {
 /*
 // Mouse down in gesture area
 $("#gesture-box-1").mousedown(function() {
-  $("#gestures-output").val("mouse down")
+  $("#about-output").val("mouse down")
 }
 );
 // Mouse up in gesture area
 $("#gesture-box-1").mouseup(function() {
-  $("#gestures-output").val("mouse up")
+  $("#about-output").val("mouse up")
 }
 );
 */
 /*
 // Mouse is hovering (before down and up click)
 $("#gesture-box-1").hover(function() {
-  $("#gestures-output").val("hover")
+  $("#about-output").val("hover")
 }
 );
 */
 
 // Mouse leaves gesture area
 $("#gesture-box-1").mouseleave(function() {
-  $("#gestures-output").val("ready")
+  $("#about-output").val("ready")
 }
 );
 
@@ -128,7 +130,7 @@ $("#gesture-box-1").mousedown(function(event) {
   downX = event.pageX;
   downY = event.pageY;
 
-  $("#gestures-output").val("mouse down")
+  $("#about-output").val("mouse down")
 }
 );
 
@@ -137,25 +139,25 @@ $("#gesture-box-1").mouseup(function(event) {
   upY = event.pageY;
 
   if ((upX - downX) > 20) {
-    $("#gestures-output").val("swipe right")
+    $("#about-output").val("swipe right")
   }
   else if ((upX - downX) < -20) {
-    $("#gestures-output").val("swipe left")
+    $("#about-output").val("swipe left")
   }
   else if((upY - downY) > 20){
-    $("#gestures-output").val("swipe down")
+    $("#about-output").val("swipe down")
   }
   else if((upY - downY) < -20){
-    $("#gestures-output").val("swipe up")
+    $("#about-output").val("swipe up")
   }
   else {
-    $("#gestures-output").val("mouse up")
+    $("#about-output").val("mouse up")
   }
 }
 );
 
 // This function switches tabs based on tabPosition.
-// tabPosition 0 = dialer; 1 = contacts; 2 = add contacts; 3 = gestures
+// tabPosition 0 = dialer; 1 = contacts; 2 = add contacts; 3 = about
 
 function switchTabs(tabPosition) {
   if (tabPosition == 0){
@@ -163,11 +165,11 @@ function switchTabs(tabPosition) {
       $("#dialer-content").show(); // show the "dialer-content"
       $("#contact-list-content").hide(); // hide the contact-list-content in the starting state
       $("#add-contact-content").hide(); // hide the add-contact-content in the starting state
-      $("#gestures-content").hide(); // hide the gestures-content
+      $("#about-content").hide(); // hide the about-content
       $("#dialer").addClass("active"); // switch to active style
       $("#contact-list").removeClass("active"); // remove active style from all others
       $("#add-contact").removeClass("active"); // remove active style from all others
-      $("#gestures").removeClass("active"); // remove active style from all others
+      $("#about").removeClass("active"); // remove active style from all others
       tabPosition = 0; // reset tabPosition (just in case)
   }
   if (tabPosition == 1){
@@ -175,11 +177,11 @@ function switchTabs(tabPosition) {
       $("#dialer-content").hide(); // hide the "dialer-content"
       $("#contact-list-content").show(); // show the contact-list-content in the starting state
       $("#add-contact-content").hide(); // hide the add-contact-content in the starting state
-      $("#gestures-content").hide(); // hide the gestures-content
+      $("#about-content").hide(); // hide the about-content
       $("#dialer").removeClass("active"); // switch to active style
       $("#contact-list").addClass("active"); // remove active style from all others
       $("#add-contact").removeClass("active"); // remove active style from all others
-      $("#gestures").removeClass("active"); // remove active style from all others
+      $("#about").removeClass("active"); // remove active style from all others
       tabPosition = 1;
   }
   if (tabPosition == 2){
@@ -187,11 +189,11 @@ function switchTabs(tabPosition) {
       $("#dialer-content").hide(); // hide the "dialer-content"
       $("#contact-list-content").hide(); // hide the contact-list-content in the starting state
       $("#add-contact-content").show(); // show the add-contact-content in the starting state
-      $("#gestures-content").hide(); // hide the gestures-content
+      $("#about-content").hide(); // hide the about-content
       $("#dialer").removeClass("active"); // switch to active style
       $("#contact-list").removeClass("active"); // remove active style from all others
       $("#add-contact").addClass("active"); // remove active style from all others
-      $("#gestures").removeClass("active"); // remove active style from all others
+      $("#about").removeClass("active"); // remove active style from all others
       tabPosition = 2;
 
   }

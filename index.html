@@ -2,7 +2,9 @@
   <head>
   <title>Meow Dialer</title>
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-  <link rel="stylesheet" href="phone.css">
+  <link rel="stylesheet" type="text/css" href="phone.css" title="default">
+  <link rel="alternate stylesheet" type="text/css" href="phone-large" title="alternate" />
+  <meta http-equiv="Default-Style" content="default">
   </head>
 
   <body>
@@ -87,11 +89,21 @@ function PlaySound(path) {
     </div>
 
     <div class="content" id="about-content">
-      <p>About this project content goes here</p>
-      <button id="large-format-on-3">Turn off large format (button)</button>
+      <h2>Design updates</h2>
+      <p>For this project, I added a low-vision mode, which displays all of the content in a bigger font and displays light-on-dark text. </p>
+      <p>I went with the alternate index.html solution, which I actually don't think is ideal. The problem with this is that when I toggle the formats, it refreshes the state of the DOM, so I lose whatever tab I was on at the moment. So if I toggle the large format mode from the "Add Contact" tab, it goes back to the "Dialer" tab. I tried (pretty hard, atually!) to implement a solution that just toggles back and forth between the style sheets, but I couldn't get it to work. I think that's ultimately a better solution because then your page can remember the DOM state, so the tab navigation will be more fluid.</p>
+      <h2>Lessons learned using a magnifier</h2>
+      <p>I played around with the built in MacOSX magnifier features. Here are some things I observed/learned:
+      <ul>
+        <li>Scrolling sometimes happens very quickly when you are zoomed in! You have to be careful with this (or change your scroll speed).</li>
+        <li>With the MacOSX magnifier, it's easy to toggle between max zoom and regular zoom, but not easy to get intermittent zoom levels. To do this, it's much easier to use the browser zoom functions.</li>
+        <li>I tended to go back and forth a lot between the zoom mode and the regular mode, using the regular mode for large-scale navigation around page regions, and then the zoom mode for interactive elements (entering text into a field, selecting a check-box, etc.).</li>
+        <li>I interacted with a map, and noticed that the magnifier started to break down because the map had its own zoom controls (for the map content). When I was zoomed in on an area of interest within the map, using the magnifier, I could't see the map zoom controls.</li>
+        <li>I also played with changing the size of my cursor, and really enjoyed that feature! I think I'm actually going to stick with an enlarged cursor from here on out.</li></ul></p>
     </div>
 
-    <p class="note-text" id="large-format-not"><a href="index-large.html">Turn on large format</a></p>
+    <p><a href="index-large.html">Turn on large format mode</a></p>
+
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
