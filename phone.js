@@ -21,8 +21,21 @@ $("#add-contact").click(function() { // when the "add-contact" button is clicked
   switchTabs(2)
 });
 
-$("#gestures").click(function() { // when the "gestures" button is clicked
+$("#about").click(function() { // when the "gestures" button is clicked
   switchTabs(3)
+});
+
+
+// Turn off large format mode
+
+$("#large-format-off-3").click(function() { // when the "Turn off large format" button is clicked
+  window.location.href = 'index.html';
+  switchTabs(3); // This should make sure you stay on the same tab -- but for some reason it's not working!! :(
+});
+
+$("#large-format-on-3").click(function() { // when the "Turn off large format" button is clicked
+  window.location.href = 'index.html';
+  switchTabs(3); // This should make sure you stay on the same tab -- but for some reason it's not working!! :(
 });
 
 // When you click a button, add that number into the dialer
@@ -183,18 +196,19 @@ function switchTabs(tabPosition) {
 
   }
   if (tabPosition == 3){
-    // Show Gestures tab and hide others
+    // Show About This Project tab and hide others
       $("#dialer-content").hide(); // hide the "dialer-content"
       $("#contact-list-content").hide(); // hide the contact-list-content in the starting state
       $("#add-contact-content").hide(); // hide the add-contact-content in the starting state
-      $("#gestures-content").show(); // show the gestures-content
-      $("#gestures-output").val("ready") // clear the gesture status box
+      $("#about-content").show(); // show the about-content
       $("#dialer").removeClass("active"); // switch to active style
       $("#contact-list").removeClass("active"); // remove active style from all others
       $("#add-contact").removeClass("active"); // remove active style from all others
-      $("#gestures").addClass("active"); // remove active style from all others
+      $("#about").addClass("active"); // remove active style from all others
       tabPosition = 3;
   }
+
+
 }
 
 // This listens for key strokes and updates tab position based on the direction
